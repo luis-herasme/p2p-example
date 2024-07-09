@@ -1,0 +1,16 @@
+[package]
+name = "p2p-example"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+console_error_panic_hook = "0.1.7"
+wasm-bindgen = "0.2.92"
+web-sys = { version = "0.3.69", features = [
+    "Window",
+    "Document",
+    "HtmlElement",
+    "Text",
+    "HtmlInputElement"
+] }
+p2p = { path = "../p2p" }

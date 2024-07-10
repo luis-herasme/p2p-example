@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello World</title>
+  
+<link rel="modulepreload" href="/p2p-example-800395f239efaa35.js" crossorigin=anonymous integrity="sha384-l0Lw0egGiSTUOkC4q9WInXwOtMOz4KaaJvruwnpbgACEo303MaRklTHJpQAw12jh">
+<link rel="preload" href="/p2p-example-800395f239efaa35_bg.wasm" crossorigin=anonymous integrity="sha384-BVJNt9AUwogEi86Xp5NB5+XZbyfkON/cwn3UpSaH8meC+a+u4uGXR/A32A77YJ2u" as="fetch" type="application/wasm"></head>
+  <body
+    style="
+      margin: 0px;
+      padding: 0px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <div> 
+      <div>
+        <button id="connect">Connect with peer</button>
+      </div>
+      <code>Your peer id is: <b id="peer-id"></b></code>
+      <div
+        style="
+          border: 1px solid rgb(118, 118, 118);
+          height: 600px;
+          margin-bottom: 8px;
+          font-family: monospace;
+          padding: 8px;
+          width: 800px;
+          overflow-y: auto;
+        "
+        id="messages"
+      ></div>
+      <form id="chat-form">
+        <input type="text" id="message-input" />
+        <input type="submit" value="Send" />
+      </form>
+      <script>
+        document
+          .getElementById("chat-form")
+          .addEventListener("submit", (event) => {
+            event.preventDefault();
+          });
+      </script>
+    </div>
+  
+<script type="module" nonce="wTp70LRHkoWJtMaqPYMYkQ==">
+import init, * as bindings from '/p2p-example-800395f239efaa35.js';
+const wasm = await init('/p2p-example-800395f239efaa35_bg.wasm');
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script></body>
+</html>

@@ -19,8 +19,7 @@ fn main() {
 
 async fn main_async() {
     console_error_panic_hook::set_once();
-    let mut p2p = P2P::new("ws://127.0.0.1:9001");
-
+    let mut p2p = P2P::new("wss://signaling.luisherasme.com");
     let id = p2p.id().await;
     console_log!("Your peer id: {}", id);
 

@@ -1,6 +1,6 @@
 use std::{cell::RefCell, rc::Rc};
 
-use p2p::{
+use wasm_p2p::{
     console_log, wasm_bindgen, wasm_bindgen_futures, Closure, ConnectionUpdate, JsCast, JsValue,
     P2P,
 };

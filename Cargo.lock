@@ -52,24 +52,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3fdb12b2476b595f9358c5161aa467c2438859caa136dec86c26fdd2efe17b92"
 
 [[package]]
-name = "p2p"
-version = "0.1.0"
-dependencies = [
- "console_error_panic_hook",
- "serde",
- "serde_json",
- "wasm-bindgen",
- "wasm-bindgen-futures",
- "web-sys",
-]
-
-[[package]]
 name = "p2p-example"
 version = "0.1.0"
 dependencies = [
  "console_error_panic_hook",
- "p2p",
  "wasm-bindgen",
+ "wasm_p2p",
  "web-sys",
 ]
 
@@ -210,6 +198,20 @@ name = "wasm-bindgen-shared"
 version = "0.2.92"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "af190c94f2773fdb3729c55b007a722abb5384da03bc0986df4c289bf5567e96"
+
+[[package]]
+name = "wasm_p2p"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c10da0db2f093f2251bb8a3cf8935761a5842651d596e57d0ade2c6c18cfcdad"
+dependencies = [
+ "console_error_panic_hook",
+ "serde",
+ "serde_json",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
+ "web-sys",
+]
 
 [[package]]
 name = "web-sys"

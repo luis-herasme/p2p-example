@@ -2,7 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Hello World</title>
+    <title>P2P Chat example</title>
+    <style>
+      .hidden {
+        display: none !important;
+      }
+    </style>
   </head>
   <body
     style="
@@ -14,11 +19,13 @@
       align-items: center;
     "
   >
-    <div> 
+    <div style="max-width: 800px; width: 100%; padding: 20px; display: block">
       <div>
         <button id="connect">Connect with peer</button>
       </div>
-      <code>Your peer id is: <b id="peer-id"></b></code>
+      <div style="margin-bottom: 20px; margin-top: 20px; font-family: 'Courier New', Courier, monospace;">
+        Your peer id is: <b id="peer-id"></b>
+      </div>
       <div
         style="
           border: 1px solid rgb(118, 118, 118);
@@ -26,8 +33,10 @@
           margin-bottom: 8px;
           font-family: monospace;
           padding: 8px;
-          width: 800px;
+          width: 100%;
+          display: block;
           overflow-y: auto;
+          box-sizing: border-box;
         "
         id="messages"
       ></div>
@@ -35,6 +44,98 @@
         <input type="text" id="message-input" />
         <input type="submit" value="Send" />
       </form>
+      <div
+        class="hidden"
+        id="loading"
+        style="
+          display: flex;
+          position: fixed;
+          width: 100vw;
+          height: 100vh;
+          background-color: rgb(0, 0, 0);
+          color: white;
+          top: 0px;
+          left: 0px;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          font-family: 'Courier New', Courier, monospace;
+          text-align: center;
+        "
+      >
+        <div>
+          <div id="loading-text">Loading...</div>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-top: 20px;
+            "
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 200 200"
+              style="width: 100px; height: 100px"
+            >
+              <circle
+                fill="#FFFFFF"
+                stroke="#FFFFFF"
+                stroke-width="15"
+                r="3"
+                cx="40"
+                cy="65"
+              >
+                <animate
+                  attributeName="cy"
+                  calcMode="spline"
+                  dur="2"
+                  values="65;135;65;"
+                  keySplines=".5 0 .5 1;.5 0 .5 1"
+                  repeatCount="indefinite"
+                  begin="-.4"
+                ></animate>
+              </circle>
+              <circle
+                fill="#FFFFFF"
+                stroke="#FFFFFF"
+                stroke-width="15"
+                r="3"
+                cx="100"
+                cy="65"
+              >
+                <animate
+                  attributeName="cy"
+                  calcMode="spline"
+                  dur="2"
+                  values="65;135;65;"
+                  keySplines=".5 0 .5 1;.5 0 .5 1"
+                  repeatCount="indefinite"
+                  begin="-.2"
+                ></animate>
+              </circle>
+              <circle
+                fill="#FFFFFF"
+                stroke="#FFFFFF"
+                stroke-width="15"
+                r="3"
+                cx="160"
+                cy="65"
+              >
+                <animate
+                  attributeName="cy"
+                  calcMode="spline"
+                  dur="2"
+                  values="65;135;65;"
+                  keySplines=".5 0 .5 1;.5 0 .5 1"
+                  repeatCount="indefinite"
+                  begin="0"
+                ></animate>
+              </circle>
+            </svg>
+          </div>
+        </div>
+      </div>
       <script>
         document
           .getElementById("chat-form")

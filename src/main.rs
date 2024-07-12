@@ -29,7 +29,9 @@ async fn main_async() {
         .unwrap()
         .get_element_by_id("peer-id")
         .unwrap()
-        .set_inner_html(&id);
+        .set_inner_html(&format!(
+            r#"{id} <button style="cursor: pointer;" onclick="navigator.clipboard.writeText('{id}')">Copy ID to clipboard</button>"#
+        ));
     setup_connect_button(p2p.clone());
     setup_chat_input(p2p.clone(), other_peer_id.clone());
 
@@ -73,20 +75,41 @@ fn insert_message(message: String, name: &str, color: &str) {
 }
 
 fn setup_connect_button(p2p: P2P) {
-    let document = window().unwrap().document().unwrap();
-
     let callback = Closure::<dyn FnMut()>::new(move || {
         let mut p2p = p2p.clone();
         spawn_local(async move {
             if let Some(peer_id) =
                 prompt("What is the ID of the peer you want to connect to?").as_string()
             {
+                let loading = window()
+                    .unwrap()
+                    .document()
+                    .unwrap()
+                    .get_element_by_id("loading")
+                    .unwrap();
+
+                let loading_text = window()
+                    .unwrap()
+                    .document()
+                    .unwrap()
+                    .get_element_by_id("loading-text")
+                    .unwrap();
+
+                loading_text.set_inner_html(&format!(
+                    "Connecting with peer<br></br><b>{peer_id}</b><br></br>this can take a few seconds, do not close the tab"
+                ));
+
+                loading.set_class_name("");
                 p2p.connect(&peer_id).await;
+                loading.set_class_name("hidden");
             }
         });
     });
 
-    document
+    window()
+        .unwrap()
+        .document()
+        .unwrap()
         .get_element_by_id("connect")
         .unwrap()
         .add_event_listener_with_callback("click", callback.as_ref().unchecked_ref())

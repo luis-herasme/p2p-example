@@ -9,8 +9,8 @@
       }
     </style>
   
-<link rel="modulepreload" href="/p2p-example-4eccad290d734fe8.js" crossorigin=anonymous integrity="sha384-X2lj3tCXak9GqLNcbht50xTbxBuBlWTSmAb+cxGSfdoxEh0NXmNcZAnneiu5qFjE">
-<link rel="preload" href="/p2p-example-4eccad290d734fe8_bg.wasm" crossorigin=anonymous integrity="sha384-Do1PayWFuLd/J7DPPyUUsigCv5r5PAN5cVe3Lu0D6zfocTFFA+2uAfUVDQxd2VMb" as="fetch" type="application/wasm"></head>
+<link rel="modulepreload" href="/p2p-example-6da9dbbd96f94595.js" crossorigin=anonymous integrity="sha384-Me+Nqm8ejv4DVqxWoheYPabRFd5HGXw7HIWIoeCdWw0xvH44JJKzKf4q/d8pBIFF">
+<link rel="preload" href="/p2p-example-6da9dbbd96f94595_bg.wasm" crossorigin=anonymous integrity="sha384-Y/n+F204Rxyx85iCPXgr9UV5f1l4HuWUTEcc1QElcc7WClTGXsNhTKBa/t3XJMh2" as="fetch" type="application/wasm"></head>
   <body
     style="
       margin: 0px;
@@ -22,11 +22,15 @@
     "
   >
     <div style="max-width: 800px; width: 100%; padding: 20px; display: block">
-      <div>
-        <button id="connect">Connect with peer</button>
-      </div>
-      <div style="margin-bottom: 20px; margin-top: 20px; font-family: 'Courier New', Courier, monospace;">
+      <div
+        style="
+          margin-bottom: 20px;
+          margin-top: 20px;
+          font-family: 'Courier New', Courier, monospace;
+        "
+      >
         Your peer id is: <b id="peer-id"></b>
+        <button id="copy-peer-id-button">Copy peer ID</button>
       </div>
       <div
         style="
@@ -66,7 +70,10 @@
         "
       >
         <div>
-          <div id="loading-text">Loading...</div>
+          <div id="loading-text">
+            Connecting with peer. <br />This can take a few seconds, do not
+            close the tab
+          </div>
           <div
             style="
               display: flex;
@@ -147,9 +154,9 @@
       </script>
     </div>
   
-<script type="module" nonce="+PSAWy1IWJoMut6zGmGJmA==">
-import init, * as bindings from '/p2p-example-4eccad290d734fe8.js';
-const wasm = await init('/p2p-example-4eccad290d734fe8_bg.wasm');
+<script type="module" nonce="ux6pIfP3Vv/HL+ygcrOytg==">
+import init, * as bindings from '/p2p-example-6da9dbbd96f94595.js';
+const wasm = await init('/p2p-example-6da9dbbd96f94595_bg.wasm');
 
 
 window.wasmBindings = bindings;

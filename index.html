@@ -20,11 +20,15 @@
     "
   >
     <div style="max-width: 800px; width: 100%; padding: 20px; display: block">
-      <div>
-        <button id="connect">Connect with peer</button>
-      </div>
-      <div style="margin-bottom: 20px; margin-top: 20px; font-family: 'Courier New', Courier, monospace;">
+      <div
+        style="
+          margin-bottom: 20px;
+          margin-top: 20px;
+          font-family: 'Courier New', Courier, monospace;
+        "
+      >
         Your peer id is: <b id="peer-id"></b>
+        <button id="copy-peer-id-button">Copy peer ID</button>
       </div>
       <div
         style="
@@ -64,7 +68,10 @@
         "
       >
         <div>
-          <div id="loading-text">Loading...</div>
+          <div id="loading-text">
+            Connecting with peer. <br />This can take a few seconds, do not
+            close the tab
+          </div>
           <div
             style="
               display: flex;
